@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 36px;
+    font-weight: normal;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section.tool {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+section.tool h2 {
+    margin-top: 0;
+}
+
+textarea,
+input[type="number"],
+input[type="text"],
+input[type="file"],
+select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+@media only screen and (max-width : 480px) {
+    main {
+        padding: 10px;
+    }
+
+    section.tool {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+#base64-img-output img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+textarea.output.copied,
+input[type="text"].output.copied {
+    background-color: #d9e6f2;
+}
+
+span.copied {
+    display: inline-block;
+    padding: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    animation: fade-out 1s forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

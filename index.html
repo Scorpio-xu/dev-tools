@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>常用开发工具</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>常用开发工具</h1>
+    </header>
+
+    <main>
+        <section class="tool">
+            <h2>Json 字符串美化</h2>
+            <textarea id="json-input" rows="5" placeholder="请输入需要美化的Json字符串"></textarea>
+            <button id="json-btn" onclick="beautifyJson()">美化</button>
+            <textarea id="json-output" class="output" rows="5" readonly></textarea>
+        </section>
+
+        <section class="tool">
+            <h2>时间戳转换</h2>
+            <label for="timestamp-input">时间戳：</label>
+            <input id="timestamp-input" type="text" placeholder="请输入时间戳">
+            <label for="timestamp-type-input">时间戳类型：</label>
+            <select id="timestamp-type-input">
+                <option value="s">秒</option>
+                <option value="ms">毫秒</option>
+            </select>
+            <button id="timestamp-btn" onclick="convertTimestamp()">转换</button>
+            <input id="timestamp-output" type="text" class="output" readonly>
+        </section>
+
+        <section class="tool">
+            <h2>逆向时间戳转换</h2>
+            <label for="datetime">时间：</label>
+            <input type="datetime-local" id="datetime" name="datetime">
+            <button onclick="reverseTimestamp()">转换</button>
+            <input type="text" id="reverse-timestamp-output" class="output" readonly>
+        </section>
+
+        <section class="tool">
+            <h2>Unicode 编解码</h2>
+            <textarea id="unicode-input" placeholder="请输入需要编解码的字符串"></textarea>
+            <button id="unicode-btn" onclick="encodeUnicode()">编码</button>
+            <button id="unicode-btn" onclick="decodeUnicode()">解码</button>
+            <textarea id="unicode-output" class="output" rows="5" readonly></textarea>
+        </section>
+
+        <section class="tool">
+            <h2>MD5 加密</h2>
+            <input id="md5-input" type="text" placeholder="请输入需要加解密的字符串">
+            <button id="md5-btn" onclick="md5()">加密</button>
+            <input id="md5-output" type="text" class="output" readonly>
+        </section>
+
+        <section class="tool">
+            <h2>JWT 解密</h2>
+            <textarea id="jwt-input" placeholder="请输入需要解密的JWT"></textarea>
+            <button id="jwt-btn" onclick="decodeJWT()">解密</button>
+            <textarea id="jwt-output" class="output" rows="5" readonly></textarea>
+        </section>
+
+        <section class="tool">
+            <h2>Base64 编解码</h2>
+            <textarea id="base64-input" class="input-field" placeholder="请输入要进行 Base64 编码或解码的文本" rows="5"></textarea>
+            <button id="base64-encode" class="button">Base64 编码</button>
+            <button id="base64-decode" class="button">Base64 解码</button>
+            <textarea id="base64-output" class="output" rows="5" readonly></textarea>
+        </section>
+
+        <section class="tool">
+            <h2>图片转 Base64</h2>
+            <label for="img-input">请选择一张图片：</label>
+            <input id="img-input" type="file" accept="image/*">
+            <button id="img-btn" onclick="convertImgToBase64()">转换为Base64</button>
+            <textarea id="img-output" class="output" rows="5" readonly></textarea>
+        </section>
+
+        <section class="tool">
+            <h2>Base64 转图片</h2>
+            <textarea id="base64-img-input" rows="5" placeholder="请输入Base64编码的图片"></textarea>
+            <button id="base64-img-btn" onclick="convertBase64ToImg()">转换为图片</button>
+            <div id="base64-img-output"></div>
+        </section>
+
+        <section class="tool">
+            <h2>URL 编解码</h2>
+            <textarea id="url-input" rows="5" placeholder="请输入需要编解码的字符串"></textarea>
+            <button id="url-btn" onclick="encodeURL()">编码</button>
+            <button id="url-btn" onclick="decodeURL()">解码</button>
+            <textarea id="url-output" class="output" rows="5" readonly></textarea>
+        </section>
+
+        <section class="tool">
+            <h2>随机数自动生成</h2>
+            <input id="random-input" type="number" placeholder="请输入随机数位数">
+            <button id="random-btn" onclick="generateRandom()">生成</button>
+            <input id="random-output" type="text" class="output" readonly>
+        </section>
+
+        <section class="tool">
+            <h2>UUID 自动生成</h2>
+            <button id="uuid-btn" onclick="generateUUID()">生成</button>
+            <input id="uuid-output" type="text" class="output" readonly>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

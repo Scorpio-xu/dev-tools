@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>折线图和柱状图绘制</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0069d9;
+    }
+    .chart {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .chart-legend {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+    .data-group {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .data-group label {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    .data-group input[type="text"] {
+      display: inline-block;
+      width: 30%;
+      margin-right: 10px;
+    }
+    .data-group input[type="color"] {
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .add-data {
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .add-data:hover {
+      background-color: #0069d9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>折线图和柱状图绘制</h1>
+    <div class="form-group">
+      <label for="chart-type">请选择图表类型：</label>
+      <select id="chart-type">
+        <option value="line">折线图</option>
+        <option value="bar">柱状图</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="chart-title">请输入图表标题：</label>
+      <input type="text" id="chart-title">
+    </div>
+    <div class="form-group">
+      <label for="chart-xaxis">请输入X轴数据（用,分隔）：</label>
+      <input type="text" id="chart-xaxis">
+    </div>
+    <div id="data-container"></div>
+    <div class="form-group">
+      <button id="add-data" class="add-data">添加数据</button>
+    </div>
+    <div class="form-group">
+      <button id="draw-chart">绘制图表</button>
+    </div>
+    <div id="chart" class="chart"></div>
+  </div>
+  <script>
+    var chartType = document.getElementById('chart-type');
+    var chartTitle = document.getElementById('chart-title');
+    var chartXAxis = document.getElementById('chart-xaxis');
+    var dataContainer = document.getElementById('data-container');
+    var addData = document.getElementById('add-data');
+    var drawChart = document.getElementById('draw-chart');
+    var chart = echarts.init(document.getElementById('chart'));
+
+    // 添加数据组
+    addData.addEventListener('click', function() {
+      var group = document.createElement('div');
+      group.classList.add('data-group');
+      group.innerHTML = '<label>数据名称：</label><input type="text" class="data-name"><label>数据（用,分隔）：</label><input type="text" class="data"><label>颜色：</label><input type="color" class="data-color">';
+      dataContainer.appendChild(group);
+    });
+
+    // 绘制图表
+    drawChart.addEventListener('click', function() {
+      var type = chartType.value;
+      var title = chartTitle.value;
+      var xAxis = chartXAxis.value.split(',');
+      var series = [];
+
+      // 遍历数据组，生成 series 数据
+      var dataGroups = document.querySelectorAll('.data-group');
+      for (var i = 0; i < dataGroups.length; i++) {
+        var dataName = dataGroups[i].querySelector('.data-name').value;
+        var data = dataGroups[i].querySelector('.data').value.split(',');
+        var color = dataGroups[i].querySelector('.data-color').value;
+        var item = {
+          name: dataName,
+          type: type,
+          data: data,
+          itemStyle: {
+            color: color
+          },
+          lineStyle: {
+            color: color
+          },
+          label: {
+            show: true,
+            position: 'top'
+          }
+        };
+        series.push(item);
+      }
+
+      var option = {
+        title: {
+          text: title,
+          left: 'center'
+        },
+        tooltip: {},
+        xAxis: {
+          data: xAxis
+        },
+        yAxis: {},
+        series: series
+      };
+
+      chart.setOption(option);
+
+      // 添加图例
+      var legends = [];
+      for (var i = 0; i < series.length; i++) {
+        legends.push(series[i].name);
+      }
+      chart.setOption({
+        legend: {
+          data: legends,
+          type: 'scroll',
+          orient: 'vertical',
+          top: 20,
+          right: 20
+        }
+      });
+    });
+  </script>
+</body>
+</html>

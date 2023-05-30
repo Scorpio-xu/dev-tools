@@ -663,6 +663,9 @@ function reverseTimestamp() {
 新增的HTML代码实现了一个时间戳转换的区块。其中包括了一个用于输入时间的`input`标签，一个“转换”按钮和一个用于输出时间戳的`input`标签。当点击“转换”按钮时，会调用名为`reverseTimestamp`的函数，将时间转换为时间戳并输出到`input`标签中。
 
 
+## 绘制图表功能的沟通记录：
+https://shareg.pt/9Vsa1z9
+
 ## 最后
 感谢ChatGPT，感谢这个时代的便利！
 

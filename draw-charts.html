@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <title>折线图和柱状图绘制</title>
@@ -11,20 +12,24 @@
       padding: 0;
       font-family: Arial, sans-serif;
     }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
       box-sizing: border-box;
     }
+
     .form-group {
       margin-bottom: 20px;
     }
+
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
     }
+
     input[type="text"] {
       width: 100%;
       padding: 10px;
@@ -32,12 +37,14 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
+
     select {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       box-sizing: border-box;
     }
+
     button {
       padding: 10px 20px;
       background-color: #007bff;
@@ -46,39 +53,47 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #0069d9;
     }
+
     .chart {
       width: 100%;
       height: 400px;
       margin-bottom: 20px;
       position: relative;
     }
+
     .chart-legend {
       position: absolute;
       right: 20px;
       top: 20px;
     }
+
     .data-group {
       border: 1px solid #ccc;
       border-radius: 5px;
       padding: 10px;
       margin-bottom: 20px;
     }
+
     .data-group label {
       display: inline-block;
       margin-bottom: 5px;
     }
+
     .data-group input[type="text"] {
       display: inline-block;
       width: 30%;
       margin-right: 10px;
     }
+
     .data-group input[type="color"] {
       margin-left: 10px;
       vertical-align: middle;
     }
+
     .add-data {
       padding: 10px;
       background-color: #007bff;
@@ -87,11 +102,13 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     .add-data:hover {
       background-color: #0069d9;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>折线图和柱状图绘制</h1>
@@ -129,7 +146,7 @@
     var chart = echarts.init(document.getElementById('chart'));
 
     // 添加数据组
-    addData.addEventListener('click', function() {
+    addData.addEventListener('click', function () {
       var group = document.createElement('div');
       group.classList.add('data-group');
       group.innerHTML = '<label>数据名称：</label><input type="text" class="data-name"><label>数据（用,分隔）：</label><input type="text" class="data"><label>颜色：</label><input type="color" class="data-color">';
@@ -137,7 +154,7 @@
     });
 
     // 绘制图表
-    drawChart.addEventListener('click', function() {
+    drawChart.addEventListener('click', function () {
       var type = chartType.value;
       var title = chartTitle.value;
       var xAxis = chartXAxis.value.split(',');
@@ -172,7 +189,9 @@
           text: title,
           left: 'center'
         },
-        tooltip: {},
+        tooltip: {
+          trigger: 'axis'
+        },
         xAxis: {
           data: xAxis
         },
@@ -199,4 +218,5 @@
     });
   </script>
 </body>
+
 </html>
